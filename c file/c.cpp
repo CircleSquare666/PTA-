@@ -1907,7 +1907,7 @@ int main(){
 }*/
 
 /*PAT A1061*/
-int main(){
+/* int main(){
 	int i,j,len[4],count=0;
 	char s[4][70],day[7][4]={"MON","TUE","WED","THU","FRI","SAT","SUN"};
 	for(i=0;i<4;i++){
@@ -1928,6 +1928,99 @@ int main(){
 		}
 	}
 	return 0;
+}*/
+
+/*全排列递归*/
+/*int n;
+int p[11];
+int flag[11]={0};
+void perm(int x){
+	if(x==n){
+		for(int i=0;i<n;i++){
+			if(i==n-1)
+				printf("%d\n",p[i]);
+			else
+				printf("%d ",p[i]);
+		}
+		return;
+	}
+	for(int j=1;j<=n;j++){
+		if(flag[j]==0){
+			p[x]=j;
+			flag[j]=1;
+			perm(x+1);
+			flag[j]=0;	
+			}
+		}
+	}
+int main(){
+	scanf("%d",&n);
+	perm(0);
+	return 0;
+} */
+
+/*PAT B1020简单贪心算法*/
+/* struct mooncake{
+	double store;
+	double tprice;
+	double pprice;
+}cake[1010];
+bool cmp(struct mooncake a,struct mooncake b){
+	return a.pprice>b.pprice;
 }
-		
+int main(){
+	int n;
+	double d,pro=0;
+	scanf("%d %lf",&n,&d);
+	for(int i=0;i<n;i++)
+		scanf("%lf",&cake[i].store);
+	for(int i=0;i<n;i++){
+		scanf("%lf",&cake[i].tprice);
+		cake[i].pprice=cake[i].tprice/cake[i].store;
+	}
+	sort(&cake[0],&cake[n],cmp);
+	for(int i=0;i<n;i++){
+		if(cake[i].store<d){
+			pro+=cake[i].tprice;
+			d-=cake[i].store;
+		}
+		else{
+			pro+=cake[i].pprice*d;
+			d=0;
+			break;
+		}
+	}
+	printf("%.2f\n",pro);
+	return 0;
+}*/
+/*PAT B1023简单贪心算法*/
+/*int main(){
+	int p[10]={0},n=0,i,j;
+	for(i=0;i<10;i++){
+		scanf("%d",&p[i]);
+		n+=p[i];
+	}
+	for(i=1;i<=n;i++){
+		if(i==1){
+			for(j=1;j<10;j++){
+				if(p[j]>0){
+					printf("%d",j);
+					p[j]--;
+					break;
+				}
+			}
+		}
+		else{
+			for(j=0;j<10;j++){
+				if(p[j]>0){
+					printf("%d",j);
+					p[j]--;
+					break;
+				}
+			}
+		}
+	}
+	return 0;
+}*/
+
  
